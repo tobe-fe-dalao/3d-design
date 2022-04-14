@@ -1,6 +1,6 @@
 {
-  "name": "vue-oasis",
-  "version": "0.0.0",
+  "name": "3d-design",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
