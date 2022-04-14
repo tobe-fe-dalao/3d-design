@@ -1,6 +1,6 @@
 <p align="center">
   <a href="#">
-    <img width="300" height="auto" src="https://uufefile.uupt.com/eic/cdn/glb/img/logo.png"/>
+    <img width="300" height="auto" src="./src/assets/img/logo.png"/>
   </a>
 </p>
 <h1 align="center">3DDesign</h1>

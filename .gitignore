@@ -1,2 +1,5 @@
 /node_modules
 /dist
+npm-lock.json
+pnpm-lock.json
+pnpm-lock.yaml
