@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="37px" height="37px" viewBox="0 0 37 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>导出全部材质</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="三维编辑器-展开" transform="translate(-1707.000000, -6.000000)">
+            <g id="编组-4" transform="translate(1707.500000, 6.750906)">
+                <path d="M2,0 L34,0 C35.1045695,-2.02906125e-16 36,0.8954305 36,2 L36,34 C36,35.1045695 35.1045695,36 34,36 L2,36 C0.8954305,36 1.02344917e-15,35.1045695 0,34 L0,2 C-1.3527075e-16,0.8954305 0.8954305,1.09108455e-15 2,0 Z" id="矩形" fill="#2E2E2E"></path>
+                <g id="导出单个材质" transform="translate(7.362016, 7.362016)">
+                    <rect id="矩形" stroke="#979797" fill="#D8D8D8" opacity="0" x="0.5" y="0.5" width="20.2759686" height="20.2759686" rx="1"></rect>
+                    <line x1="12.8879843" y1="11.0129843" x2="17.3879843" y2="11.0129843" id="路径" stroke="#FFFFFF" stroke-width="1.66666667" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <polyline id="路径" stroke="#FFFFFF" stroke-width="1.66666667" stroke-linecap="round" stroke-linejoin="round" points="15.1379843 8.76298432 17.3879843 11.0129843 15.1379843 13.2629843"></polyline>
+                    <path d="M9.51298432,3.88798432 L9.51298432,11.3879843 C9.51298432,13.9151468 7.20103432,16.4755343 5.01298432,17.3879843" id="路径" stroke="#FFFFFF" stroke-width="1.66666667" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M17.3879843,6.88798432 L17.3879843,5.01298432 C17.3879843,4.39166557 16.8843218,3.88798432 16.2629843,3.88798432 L5.01298432,3.88798432 C4.39166557,3.88798432 3.88798432,4.39166557 3.88798432,5.01298432 L3.88798432,16.2629843 C3.88798432,16.8843218 4.39166557,17.3879843 5.01298432,17.3879843 L16.2629843,17.3879843 C16.8843218,17.3879843 17.3879843,16.8843218 17.3879843,16.2629843 L17.3879843,14.9504843" id="路径" stroke="#FFFFFF" stroke-width="1.66666667" stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
