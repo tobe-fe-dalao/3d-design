@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="23px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>重置相机</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="三维编辑器-导航" transform="translate(-456.000000, -27.000000)">
+            <g id="重置相机" transform="translate(456.000000, 27.000000)">
+                <rect id="矩形" stroke="#979797" fill="#D8D8D8" opacity="0" x="1.208625" y="1.25" width="21" height="21" rx="1"></rect>
+                <line x1="19.2083333" y1="6.99333077" x2="19.2083333" y2="15.125" id="路径" stroke="#FFFFFF" stroke-width="1.66666667" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="4.20833333" y1="11.75" x2="4.20833333" y2="17.75" id="路径" stroke="#FFFFFF" stroke-width="1.66666667" stroke-linecap="round" stroke-linejoin="round"></line>
+                <path d="M4.20833333,11.75 C4.20833333,15.4779125 7.56620833,18.5 11.7083333,18.5 C13.7315,18.5 15.5675833,17.779025 16.9166667,16.6069625" id="路径" stroke="#FFFFFF" stroke-width="1.66666667" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M19.208625,14.9 C19.208625,9.432395 15.8238344,5 11.6485075,5 C9.51256434,5 7.58351636,6.159928 6.208625,8.025" id="路径" stroke="#FFFFFF" stroke-width="1.66666667" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>
