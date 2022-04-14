@@ -1,13 +1,25 @@
-<p align="center">
+<p align="center" style="margin:30px 0;">
   <a href="#">
     <img width="300" height="auto" src="./src/assets/img/logo.png"/>
   </a>
+  <div align="center">一个零门槛快速上手、可生成图或代码片段的3D模型调优工作台</div>  
 </p>
-<div align="center">一个零门槛快速上手、可生成图或代码片段的3D模型调优工作台</div>
 
+
+<p align="center">  
+    <img src="https://img.shields.io/badge/-Vue3-34495e?logo=vue.j" />
+    <img src="https://img.shields.io/badge/-Vite2.7-646cff?logo=vite&logoColor=white" />
+    <img src="https://img.shields.io/badge/-TypeScript-blue?logo=typescript&logoColor=white" />
+    <img src="https://img.shields.io/badge/-ESLint-4b32c3?logo=eslint&logoColor=white" />
+    <img src="https://img.shields.io/badge/-pnpm-F69220?logo=pnpm&logoColor=white" />
+    <img src="https://img.shields.io/badge/-Prettier-ef9421?logo=Prettier&logoColor=white" alt="Prettier">
+    <img src="https://img.shields.io/badge/-scss-1D365D?logo=scss&logoColor=white" alt="Less">
+<p>   
 
 ## 简介
-> 3DDesign是由UU跑腿-大前端技术团队发起的3D模型工具平台，核心功能基于高性能 Web 图形引擎 [Oasis](https://oasisengine.cn/) 实现。  
+> 3D Design是由UU跑腿-大前端技术团队发起的3D模型工具平台，核心功能基于高性能 Web 图形引擎 [Oasis](https://oasisengine.cn/) 实现。  
+
+[使用文档介绍](https://www.yuque.com/blindmonk/3ddesign)  |  [博文介绍](https://juejin.cn/post/7070497172533280782)
 
 <img width="600px" src="./public/docs/3DD.gif" /> 
 
