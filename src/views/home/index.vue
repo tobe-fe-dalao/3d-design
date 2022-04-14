@@ -85,7 +85,7 @@ import Menus from "./components/menus/index.vue";
 import CanvasArea from "./components/canvasArea/index.vue";
 import MaterialConfig from "./components/materialConfig/index.vue";
 import ModelPreview from '@/components/ModelPreview/index.vue'
-import { IO } from '@/oasis/utils/IO';
+import { IO } from '@/oasis/utils/io';
 import { ModelConfigJsonType } from '@/common/interface'
 
 import Logo from "@/assets/img/logo.png";

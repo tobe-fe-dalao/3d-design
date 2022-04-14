@@ -26,7 +26,7 @@ import {
   WebGLEngine,
 } from "oasis-engine";
 import tinycolor from "tinycolor2";
-import { IO } from "./utils/IO";
+import { IO } from "./utils/io";
 import { Twinkle } from "./scripts/twinkle";
 import { DEFAULT_IBLURL } from "../common/constants";
 import { useStore } from "@/store";

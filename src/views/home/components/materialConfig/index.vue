@@ -266,7 +266,7 @@ import Icon01 from '@/assets/img/icon-01.svg';
 import Icon02 from '@/assets/img/icon-02.svg';
 import Icon03 from '@/assets/img/camera.svg';
 import { cloneDeep } from 'lodash-es'
-import { IO } from "@/oasis/utils/IO";
+import { IO } from "@/oasis/utils/io";
 import { SceneConfig } from "@/common/SceneConfig";
 import { ModelConfigJsonType } from "@/common/interface";
 import { MaterialPresetsManager } from "@/manager/MaterialPresetsManager";
