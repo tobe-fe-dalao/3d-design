@@ -1,56 +1,31 @@
 <template>
   <a-layout class="home">
-    <a-layout-sider
-      hide-trigger
-      style="overflow: hidden;"
-      :width="430"
-      :collapsed-width="68"
-      :collapsed="collapsed"
-    >
+    <a-layout-sider hide-trigger style="overflow: hidden;" :width="430" :collapsed-width="68" :collapsed="collapsed">
       <div class="logo" :class="{ collapsed }" :style="{ height: `${headerHeight}px` }">
         <div class="logo-content">
           <div v-if="collapsed" style="text-align: center">
-            <div style="width: 24px;height:24px" class="overflow-hidden">
-              <div style="width: 100px;height:24px" class="overflow-hidden">
+            <div class="overflow-hidden">
+              <div class="overflow-hidden">
                 <a-image :src="Logo" :preview="false" />
               </div>
             </div>
           </div>
-          <a-image v-else :height="24" :src="Logo" style="width: 98px" />
+          <a-image v-else :height="24" :src="Logo" style="width: 160px" />
         </div>
       </div>
       <div class="home-menus" :style="{ height: `calc(100% - ${headerHeight}px)` }">
-        <Menus
-          v-if="showConfig"
-          ref="MenusRef"
-          :selectedModel="selectedModel"
-          @loadModel="onloadModel"
-          @selectPart="onselectPart"
-          @menuClick="onClickMenu"
-        ></Menus>
+        <Menus v-if="showConfig" ref="MenusRef" :selectedModel="selectedModel" @loadModel="onloadModel"
+          @selectPart="onselectPart" @menuClick="onClickMenu"></Menus>
       </div>
     </a-layout-sider>
     <a-layout>
-      <a-layout-header
-        class="home-header"
-        style="padding: 0 16px"
-        :style="{ height: `${headerHeight}px` }"
-      >
+      <a-layout-header class="home-header" style="padding: 0 16px" :style="{ height: `${headerHeight}px` }">
         <a-space align="center">
           <a-tooltip title="重置相机">
-            <img
-              class="cursor-pointer"
-              src="../../assets/img/camera.svg"
-              style="width: 23px; height: 23px"
-              @click="onclickResetCamera"
-            />
+            <img class="cursor-pointer" src="../../assets/img/camera.svg" style="width: 23px; height: 23px"
+              @click="onclickResetCamera" />
           </a-tooltip>
-          <a-upload
-            action="/"
-            :beforeUpload="() => false"
-            :showUploadList="false"
-            @change="onuploadAllConfigChange"
-          >
+          <a-upload action="/" :beforeUpload="() => false" :showUploadList="false" @change="onuploadAllConfigChange">
             <a-tooltip title="加载配置">
               <img src="../../assets/img/icon-02.svg" style="width: 23px; height: 23px" />
             </a-tooltip>
@@ -59,24 +34,13 @@
 
         <a-space>
           <a-tooltip title="业务案例">
-            <div
-              class="flex justify-center align:center"
-              style="background:rgb(46,46,46);border-radius: 5px;width:36px;height:36px;"
-            >
-              <img
-                class="cursor-pointer"
-                style="width: 18px;"
-                src="../../assets/img/link.svg"
-                @click="goBusiness"
-              />
+            <div class="flex justify-center align:center"
+              style="background:rgb(46,46,46);border-radius: 5px;width:36px;height:36px;">
+              <img class="cursor-pointer" style="width: 18px;" src="../../assets/img/link.svg" @click="goBusiness" />
             </div>
           </a-tooltip>
           <a-tooltip title="模型预览">
-            <img
-              class="cursor-pointer"
-              src="../../assets/img/icon-head-01.svg"
-              @click="showModelPreview"
-            />
+            <img class="cursor-pointer" src="../../assets/img/icon-head-01.svg" @click="showModelPreview" />
           </a-tooltip>
           <a-tooltip title="导出所有配置">
             <img class="cursor-pointer" src="../../assets/img/icon-head-02.svg" @click="exportAll" />
@@ -95,11 +59,7 @@
           </div>
           <CanvasArea @engineInited="onengineInited"></CanvasArea>
         </a-layout-content>
-        <a-layout-sider
-          v-if="showConfig"
-          :width="300"
-          class="overflow-auto beauty-scroll home-sider-config"
-        >
+        <a-layout-sider v-if="showConfig" :width="300" class="overflow-auto beauty-scroll home-sider-config">
           <MaterialConfig ref="MaterialConfigRef" />
         </a-layout-sider>
       </a-layout>
@@ -274,6 +234,7 @@ function refreshModel() {
   height: 100vh;
   background: var(--bg-black-1);
   color: white;
+
   &-header {
     border-bottom: 1px solid var(--border-black-1);
     height: 70px;
@@ -282,26 +243,31 @@ function refreshModel() {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     & :deep() .ant-upload {
       display: block;
     }
   }
+
   &-sider-config {
     :deep() .ant-card {
       color: rgba(255, 255, 255, 0.7);
     }
   }
 }
+
 .home :deep(.ant-layout-sider) .logo {
   height: 70px;
   border-bottom: 1px solid var(--border-black-1);
   display: flex;
   align-items: center;
   padding-left: 21px;
+
   &.collapsed {
     padding-left: 0;
     justify-content: center;
   }
+
   &-content {
     white-space: nowrap;
   }
@@ -314,12 +280,14 @@ function refreshModel() {
   font-size: 14px;
   line-height: 48px;
 }
+
 .home :deep(.arco-layout-content) {
   color: var(--color-text-2);
   font-weight: 400;
   font-size: 14px;
   background: var(--color-bg-3);
 }
+
 .home :deep(.arco-layout-footer),
 .home :deep(.arco-layout-content) {
   display: flex;
@@ -330,6 +298,7 @@ function refreshModel() {
   font-stretch: condensed;
   text-align: center;
 }
+
 .icon-left {
   width: 30px;
   height: 56px;

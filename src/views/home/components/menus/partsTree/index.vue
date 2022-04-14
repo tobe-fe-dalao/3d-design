@@ -1,13 +1,7 @@
 <template>
   <div class="tree beauty-scroll">
-    <a-tree
-      defaultExpandAll
-      :treeData="treeData"
-      :selectedKeys="selectedKeys"
-      block-node
-      show-icon
-      @select="onselect"
-    ></a-tree>
+    <a-tree defaultExpandAll :treeData="treeData" :selectedKeys="selectedKeys" block-node show-icon @select="onselect">
+    </a-tree>
   </div>
 </template>
 
@@ -73,11 +67,18 @@ function onselect(selected: Array<string | number>) {
   height: 100%;
   margin-left: -10px;
   margin-top: -10px;
+
   & :deep() span.ant-tree-iconEle {
     line-height: normal;
   }
+
   & :deep() span.ant-tree-switcher {
     line-height: normal;
+  }
+
+  .ant-tree-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 </style>
