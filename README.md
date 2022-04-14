@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="http://landing.ant.design">
-    <img width="234px" height="58px" src="https://uufefile.uupt.com/eic/cdn/glb/img/logo@2x.png"/>
+  <a href="#">
+    <img width="280px" height="auto" src="./src/assets/img/logo.png"/>
   </a>
 </p>
 <h1 align="center"></h1>
