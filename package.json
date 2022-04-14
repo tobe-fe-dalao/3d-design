@@ -6,6 +6,7 @@
     "build": "vite build",
     "serve": "vite preview"
   },
+  "homepage": "https://github.com/tobe-fe-dalao/3d-design",
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.1",
     "@highlightjs/vue-plugin": "^2.1.0",
