@@ -21,7 +21,7 @@
               />
               <div
                 v-else
-                class="flex cursor-pointer models-list-err"
+                class="cursor-pointer flex models-list-err"
                 style="color: rgba(95,95,96);"
               >
                 <picture-filled style="font-size: 50px;" />
@@ -41,7 +41,7 @@ import { PictureFilled } from '@ant-design/icons-vue';
 import { GameManager } from "@/oasis";
 import { cloneDeep } from 'lodash-es'
 import { ModelAssetsManager } from '@/manager/ModelAssetsManager';
-import { IO } from '@/oasis/utils/io';
+import { IO } from '@/oasis/utils/IO';
 // 声明对外抛出的事件
 const emit = defineEmits(['clickModel'])
 

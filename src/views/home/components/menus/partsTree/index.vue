@@ -45,7 +45,6 @@ const treeData = computed(() => {
   const temp: TreeItem[] = [
     {
       title: name.value,
-      disabled: true,
       key: name.value,
       children: [],
     },

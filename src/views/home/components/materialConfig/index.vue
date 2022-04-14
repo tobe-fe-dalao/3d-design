@@ -1,6 +1,15 @@
 <template>
-  <a-collapse expandIconPosition="right" :bordered="false" v-model:activeKey="activeKey">
-    <a-collapse-panel header="场景" key="1" :bordered="false" :headStyle="{ borderBottom: 'none' }">
+  <a-collapse
+    expandIconPosition="right"
+    :bordered="false"
+    v-model:activeKey="activeKey"
+  >
+    <a-collapse-panel
+      header="场景"
+      key="1"
+      :bordered="false"
+      :headStyle="{ borderBottom: 'none' }"
+    >
       <SceneConfigArea :sceneConfig="sceneConfig" />
     </a-collapse-panel>
     <a-collapse-panel
@@ -22,7 +31,7 @@
             >
               <a-button
                 class="flex items-center justify-between"
-                style="background-color: #2E2E2E;font-size: 12px;border: none;"
+                style="background-color: #2e2e2e; font-size: 12px; border: none"
                 block
                 size="large"
               >
@@ -33,7 +42,9 @@
                       :src="selectedMaterialPng"
                       :preview="false"
                     ></a-image>
-                    <span style="margin-left: 10px;">{{ selectedPart.material.name }}</span>
+                    <span style="margin-left: 10px">{{
+                      selectedPart.material.name
+                    }}</span>
                   </template>
                   <template v-else>选择预设材质</template>
                 </div>
@@ -208,11 +219,20 @@
         </a-space>
       </div>
     </a-collapse-panel>
-    <a-collapse-panel header="预设交互" key="3" :bordered="false" :headStyle="{ borderBottom: 'none' }">
+    <a-collapse-panel
+      header="预设交互"
+      key="3"
+      :bordered="false"
+      :headStyle="{ borderBottom: 'none' }"
+    >
       <div class="material-config-list-item">
         <div class="material-config-list-item-label">交互方式：</div>
         <div class="material-config-list-item-right">
-          <a-select style="width: 120px;" v-model:value="selectedAction" @change="onActionChange">
+          <a-select
+            style="width: 120px"
+            v-model:value="selectedAction"
+            @change="onActionChange"
+          >
             <a-select-option :value="1">普通</a-select-option>
             <a-select-option :value="2">自旋转</a-select-option>
             <a-select-option :value="3">跟随鼠标</a-select-option>
@@ -223,11 +243,14 @@
     </a-collapse-panel>
   </a-collapse>
   <a-space class="material-btns" align="center">
-    <a-button type="text" title="导出材质配置" @click="
-      exportOneMaterialConfig
-    ">
+    <a-button type="text" title="导出材质配置" @click="exportOneMaterialConfig">
       <template #icon>
-        <a-image :width="30" :src="Icon01" :preview="false" style="margin: 3px 0 0 1px ;"></a-image>
+        <a-image
+          :width="30"
+          :src="Icon01"
+          :preview="false"
+          style="margin: 3px 0 0 1px"
+        ></a-image>
       </template>
     </a-button>
     <a-upload
@@ -238,13 +261,23 @@
     >
       <a-button type="text" title="加载材质配置">
         <template #icon>
-          <a-image :width="30" :src="Icon02" :preview="false" style="margin: 3px 0 0 1px ;"></a-image>
+          <a-image
+            :width="30"
+            :src="Icon02"
+            :preview="false"
+            style="margin: 3px 0 0 1px"
+          ></a-image>
         </template>
       </a-button>
     </a-upload>
     <a-button type="text" title="重置为模型默认样式" @click="resetToDefault">
       <template #icon>
-        <a-image :width="30" :src="Icon03" :preview="false" style="margin: 3px 0 0 1px ;"></a-image>
+        <a-image
+          :width="30"
+          :src="Icon03"
+          :preview="false"
+          style="margin: 3px 0 0 1px"
+        ></a-image>
       </template>
     </a-button>
   </a-space>
@@ -256,34 +289,39 @@ import { OnePart } from "@/common/OnePart";
 import { TextureManager } from "@/manager/TextureManager";
 import { GameManager } from "@/oasis";
 import { MeshRenderer, Vector3 } from "oasis-engine";
-import PresetMaterials from './presetMaterials/index.vue'
-import SceneConfigArea from './sceneConfig/index.vue'
+import PresetMaterials from "./presetMaterials/index.vue";
+import SceneConfigArea from "./sceneConfig/index.vue";
 import { reactive, ref, computed, inject, Ref } from "vue";
-import ColorPicker from '@/components/colorPicker/index.vue'
-import { ColorFormats } from 'tinycolor2';
-import { exportToFile } from '@/utils/utils'
-import Icon01 from '@/assets/img/icon-01.svg';
-import Icon02 from '@/assets/img/icon-02.svg';
-import Icon03 from '@/assets/img/camera.svg';
-import { cloneDeep } from 'lodash-es'
-import { IO } from "@/oasis/utils/io";
+import ColorPicker from "@/components/colorPicker/index.vue";
+import { ColorFormats } from "tinycolor2";
+import { exportToFile } from "@/utils/utils";
+import Icon01 from "@/assets/img/icon-01.svg";
+import Icon02 from "@/assets/img/icon-02.svg";
+import Icon03 from "@/assets/img/camera.svg";
+import { cloneDeep } from "lodash-es";
+import { IO } from "@/oasis/utils/IO";
 import { SceneConfig } from "@/common/SceneConfig";
 import { ModelConfigJsonType } from "@/common/interface";
 import { MaterialPresetsManager } from "@/manager/MaterialPresetsManager";
 
-const partsList = inject<Ref<OnePart[]>>('partsList', ref([]))
+const partsList = inject<Ref<OnePart[]>>("partsList", ref([]));
 
-const activeKey = ref(['1', '2', '3'])
+const activeKey = ref(["1", "2", "3"]);
 
-const selectedMaterialPng = computed(() => MaterialPresetsManager.List.find(i => i.name === selectedPart.value?.material.name)?.img)
+const selectedMaterialPng = computed(
+  () =>
+    MaterialPresetsManager.List.find(
+      (i) => i.name === selectedPart.value?.material.name
+    )?.img
+);
 
-const showPresetMaterial = ref(false)
+const showPresetMaterial = ref(false);
 
 /**可选纹理列表 */
 const selectableTextures = ref(TextureManager.defaultTextures);
-const selectedPartIndex = ref(0)
+const selectedPartIndex = ref(0);
 function changeSelectedPart(partIndex: number) {
-  console.log('partIndex', partIndex)
+  // console.log("partIndex", partIndex);
   selectedPartIndex.value = partIndex;
 }
 
@@ -301,72 +339,90 @@ function onuploadChange(res: any) {
 }
 /**获取当前材质配置数据 */
 function getMaterialConfig() {
-  let list = cloneDeep(partsList.value)
+  let list = cloneDeep(partsList.value);
   // TODO 暂不支持导出贴图配置
-  const attrs = ['baseTexture', 'normalTexture', 'emissiveTexture', 'occlusionTexture', 'roughnessMetallicTexture']
-  list.forEach(item => {
-    delete item.renderer
+  const attrs = [
+    "baseTexture",
+    "normalTexture",
+    "emissiveTexture",
+    "occlusionTexture",
+    "roughnessMetallicTexture",
+  ];
+  list.forEach((item) => {
+    delete item.renderer;
     // @ts-ignore
-    attrs.forEach(i => delete item.material[i])
-  })
-  return list
+    attrs.forEach((i) => delete item.material[i]);
+  });
+  return list;
 }
 
 /**
  * 获取所有配置数据
  */
 function getAllConfig() {
-
-  const { position } = GameManager.ins.camera.entity.transform
+  const { position } = GameManager.ins.camera.entity.transform;
   sceneConfig.cameraConfig = {
     position,
-    controlerTarget: GameManager.ins.controler?.target || new Vector3()
-  }
+    controlerTarget: GameManager.ins.controler?.target || new Vector3(),
+  };
   const materialsConfig = getMaterialConfig();
+  const index = GameManager.ins.modelGltf.url.lastIndexOf("?");
   const model = {
-    url: GameManager.ins.modelGltf.url.slice(0, GameManager.ins.modelGltf.url.lastIndexOf('?'))
-  }
+    url:
+      index >= 0
+        ? GameManager.ins.modelGltf.url.slice(0, index)
+        : GameManager.ins.modelGltf.url,
+  };
 
-  const action = selectedAction.value
+  const action = selectedAction.value;
 
   return {
     sceneConfig,
     materialsConfig,
     model,
-    action
-  }
+    action,
+  };
 }
 
 /**
  * 加载完整配置数据
  */
-function loadAllConfig(data: ModelConfigJsonType){
-  loadMaterialConfig(data.materialsConfig)
-  loadSceneConfig(data.sceneConfig)
+function loadAllConfig(data: ModelConfigJsonType) {
+  loadMaterialConfig(data.materialsConfig);
+  loadSceneConfig(data.sceneConfig);
 }
 /**
  * 加载材质配置数据
- * @param data 
+ * @param data
  */
 function loadMaterialConfig(materialsConfig: OnePart[]) {
   partsList.value.forEach((onePart) => {
-    let config: OnePart | undefined = materialsConfig.find((i) => i.name == onePart.name);
+    let config: OnePart | undefined = materialsConfig.find(
+      (i) => i.name == onePart.name
+    );
     config && onePart.loadMaterialConfig(config.material);
   });
 }
 /** 导出一份材质配置 json文件 */
 function exportOneMaterialConfig() {
-  let materialConfig = cloneDeep(selectedPart.value?.material)
-  const attrs = ['baseTexture', 'normalTexture', 'emissiveTexture', 'occlusionTexture', 'roughnessMetallicTexture']
-  attrs.forEach(i => delete materialConfig[i])
-  exportToFile(materialConfig, 'diy-material.json')
+  let materialConfig = cloneDeep(selectedPart.value?.material);
+  const attrs = [
+    "baseTexture",
+    "normalTexture",
+    "emissiveTexture",
+    "occlusionTexture",
+    "roughnessMetallicTexture",
+  ];
+  attrs.forEach((i) => delete materialConfig[i]);
+  exportToFile(materialConfig, "diy-material.json");
 }
-
 
 /** 被选中的部件 */
 const selectedPart = computed(() => {
-  let onePart = partsList.value.find((i, index) => index === selectedPartIndex.value)
-  return onePart
+  let onePart = partsList.value.find(
+    (i, index) => index === selectedPartIndex.value
+  );
+  return onePart;
 });
 
 /** 修改粗糙度 */
@@ -380,7 +436,9 @@ function onmetallicChange(value: Event | number) {
 
 /** 透明控制 */
 function onIsTransparentChange(e: Event) {
-  selectedPart.value?.changeIsTransparent((e?.target as HTMLInputElement).checked);
+  selectedPart.value?.changeIsTransparent(
+    (e?.target as HTMLInputElement).checked
+  );
 }
 /**修改透明度 */
 function onOpacityChange(value: Event | number) {
@@ -400,12 +458,11 @@ function usePresetMaterial(name: string) {
   selectedPart.value?.changeMaterial(name);
 }
 
-
 /**场景配置实例 */
 let sceneConfig = reactive(new SceneConfig());
 /**
  * 加载场景配置的json数据
- * @param data 
+ * @param data
  */
 function loadSceneConfig(data: SceneConfig) {
   sceneConfig.loadSceneConfig(data);
@@ -414,22 +471,27 @@ function loadSceneConfig(data: SceneConfig) {
 /**切换交互 */
 const selectedAction = ref(1);
 /**初始化一下 */
-localStorage.setItem('selectedAction', JSON.stringify(selectedAction.value))
+localStorage.setItem("selectedAction", JSON.stringify(selectedAction.value));
 function onActionChange() {
-  localStorage.setItem('selectedAction', JSON.stringify(selectedAction.value))
+  localStorage.setItem("selectedAction", JSON.stringify(selectedAction.value));
 }
 
 /** 重置模型为默认样式 */
 function resetToDefault() {
-  localStorage.removeItem(`modelConfig:${GameManager.ins.modelGltf.url.slice(0, GameManager.ins.modelGltf.url.lastIndexOf('?'))}`)
-  GameManager.ins.engine.dispatch(IO.REFRESH_MODEL)
+  localStorage.removeItem(
+    `modelConfig:${GameManager.ins.modelGltf.url.slice(
+      0,
+      GameManager.ins.modelGltf.url.lastIndexOf("?")
+    )}`
+  );
+  GameManager.ins.engine.dispatch(IO.REFRESH_MODEL);
 }
 
 defineExpose({
   changeSelectedPart,
   loadAllConfig,
-  getAllConfig
-})
+  getAllConfig,
+});
 </script>
 
 <style scoped lang="scss">

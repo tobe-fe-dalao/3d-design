@@ -19,9 +19,9 @@ export interface LocalModelType {
   /**文件路径 */
   path: string;
   /**图片路径 */
-  img: string | null;
+  img?: string | null;
   /**默认配置路径 */
-  defaultConfig: ModelConfigJsonType | null;
+  defaultConfig?: ModelConfigJsonType | null;
 }
 
 /**
@@ -32,10 +32,28 @@ export class ModelAssetsManager {
    *
    */
   static ModelList: LocalModelType[] = [];
+
+  static UploadModelList: LocalModelType[] = [];
+
+  static addModel(data: LocalModelType) {
+    ModelAssetsManager.ModelList.push(data);
+  }
+
+  static addUploadModel(data: LocalModelType) {
+    ModelAssetsManager.UploadModelList.push(data);
+  }
+
+  static getModelInfoByPath(path:string){
+    let data = ModelAssetsManager.ModelList.find(item => item.path === path)
+    if(!data) {
+      data = ModelAssetsManager.UploadModelList.find(item => item.path === path)
+    }
+    return data
+  }
 }
 
 for (let x in modelFiles) {
-  ModelAssetsManager.ModelList.push({
+  ModelAssetsManager.addModel({
     name: x.slice(x.lastIndexOf("/") + 1, x.lastIndexOf(".")),
     path: x.replace("/public", "."),
     img:

@@ -167,11 +167,11 @@ export class PreviewManager {
 
     this.setIBL(
       this.sceneConfig?.light.IBLUrl ||
-        "https://uufefile.uupt.com/eic/cdn/glb/env/leadenhall_market_2k.hdr.env"
+        "http://uufefile.uupt.com/eic/cdn/glb/env/leadenhall_market_2k.hdr.env"
     );
 
     // 加载模型
-    await this.changeModel(this.modelUrl);
+    await this.loadModel(this.modelUrl);
 
     // 给模型应用材质配置
     this.applyMaterialsConfig();
@@ -246,7 +246,7 @@ export class PreviewManager {
   /**
    * 更换编辑的模型
    */
-  async changeModel(url: string) {
+  async loadModel(url: string) {
     // 加载模型
     // 移除老模型
     if (this.modelGltf)

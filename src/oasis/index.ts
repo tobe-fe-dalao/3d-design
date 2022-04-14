@@ -26,7 +26,7 @@ import {
   WebGLEngine,
 } from "oasis-engine";
 import tinycolor from "tinycolor2";
-import { IO } from "./utils/io";
+import { IO } from "./utils/IO";
 import { Twinkle } from "./scripts/twinkle";
 import { DEFAULT_IBLURL } from "../common/constants";
 import { useStore } from "@/store";
@@ -312,37 +312,43 @@ export class GameManager {
   /**
    * 更换编辑的模型
    */
-  async changeModel(url: string) {
-    store.toggleLoading(true);
+  async loadModel(url: string) {
+    // store.toggleLoading(true);
 
     // 加载模型
     // TODO 如果glb文件地址加上?参数，加载会报错。 提issue
-    if (url.endsWith(".gltf")) url += `?${Math.random()}`;
-    this.modelGltf = await this.engine.resourceManager.load<GLTFResource>(url);
 
+    if (typeof url === "string" && url.endsWith(".gltf")) {
+      url += `?${Math.random()}`;
+    }
+    this.modelGltf = await this.engine.resourceManager.load<GLTFResource>(url);
+    await this.handleGltfResource(this.modelGltf);
+  }
+
+  async handleGltfResource(asset: GLTFResource) {
     this.renderers_in_modelGltf = new Array<MeshRenderer>();
-    this.modelGltf.defaultSceneRoot.getComponentsIncludeChildren(
+    asset.defaultSceneRoot.getComponentsIncludeChildren(
       MeshRenderer,
       this.renderers_in_modelGltf
     );
 
-    this.controler?.setTargetCenter(this.modelGltf.defaultSceneRoot);
+    this.controler?.setTargetCenter(asset.defaultSceneRoot);
 
     // 过滤替换材质
-    this.checkMaterials()
+    this.checkMaterials();
 
     // 播放模型中的动画
-    this.playAnimation()
+    this.playAnimation();
 
     // 移除老模型
     this.modelEntity.clearChildren();
-    this.modelEntity.addChild(this.modelGltf.defaultSceneRoot);
+    this.modelEntity.addChild(asset.defaultSceneRoot);
 
     store.toggleLoading(false);
   }
 
   /**过滤替换材质 */
-  checkMaterials(){
+  checkMaterials() {
     this.renderers_in_modelGltf.forEach(async (i) => {
       if (i.getMaterial() instanceof BlinnPhongMaterial) {
         // 如果是 BlinnPhongMaterial 材质，则替换为PBR材质
@@ -362,7 +368,7 @@ export class GameManager {
   }
 
   /**播放模型动画 */
-  playAnimation(){
+  playAnimation() {
     let { animations } = this.modelGltf;
     if (animations && animations.length > 0) {
       const animator = this.modelGltf?.defaultSceneRoot.getComponent(Animator);
@@ -430,8 +436,10 @@ export class GameManager {
    * @param jpgQuality 导出jpg格式时的图片质量。0-1
    */
   screenshot(width: number, height: number, isPNG = true, jpgQuality = 1) {
-    const capture = this.rootEntity.getComponent(Capture) || this.rootEntity.addComponent(Capture).init(this.camera)
-    capture.screenshot(width, height, isPNG, jpgQuality)
+    const capture =
+      this.rootEntity.getComponent(Capture) ||
+      this.rootEntity.addComponent(Capture).init(this.camera);
+    capture.screenshot(width, height, isPNG, jpgQuality);
   }
 
   /**
