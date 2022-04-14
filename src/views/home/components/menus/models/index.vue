@@ -41,7 +41,7 @@ import { PictureFilled } from '@ant-design/icons-vue';
 import { GameManager } from "@/oasis";
 import { cloneDeep } from 'lodash-es'
 import { ModelAssetsManager } from '@/manager/ModelAssetsManager';
-import { IO } from '@/oasis/utils/IO';
+import { IO } from '@/oasis/utils/io';
 // 声明对外抛出的事件
 const emit = defineEmits(['clickModel'])
 

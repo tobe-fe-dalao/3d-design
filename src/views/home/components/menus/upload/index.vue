@@ -66,7 +66,7 @@ import { message } from "ant-design-vue";
 import type { UploadChangeParam, UploadProps } from "ant-design-vue";
 import { GameManager } from "@/oasis";
 import { ModelAssetsManager } from "@/manager/ModelAssetsManager";
-import { IO } from "@/oasis/utils/IO";
+import { IO } from "@/oasis/utils/io";
 import { AssetType } from "oasis-engine";
 
 const emit = defineEmits(["upload", "clickModel"]);

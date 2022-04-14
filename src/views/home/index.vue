@@ -60,7 +60,7 @@
         <a-space>
           <a-tooltip title="业务案例">
             <div
-              class="flex align:center justify-center"
+              class="flex justify-center align:center"
               style="background:rgb(46,46,46);border-radius: 5px;width:36px;height:36px;"
             >
               <img
@@ -98,7 +98,7 @@
         <a-layout-sider
           v-if="showConfig"
           :width="300"
-          class="beauty-scroll overflow-auto home-sider-config"
+          class="overflow-auto beauty-scroll home-sider-config"
         >
           <MaterialConfig ref="MaterialConfigRef" />
         </a-layout-sider>
@@ -125,10 +125,10 @@ import Menus from "./components/menus/index.vue";
 import CanvasArea from "./components/canvasArea/index.vue";
 import MaterialConfig from "./components/materialConfig/index.vue";
 import ModelPreview from '@/components/ModelPreview/index.vue'
-import { IO } from '@/oasis/utils/IO';
+import { IO } from '@/oasis/utils/io';
 import { ModelConfigJsonType } from '@/common/interface'
 
-import Logo from "@/assets/img/logo@2x.png";
+import Logo from "@/assets/img/logo.png";
 
 import { UploadOutlined, RightOutlined, LeftOutlined } from '@ant-design/icons-vue';
 

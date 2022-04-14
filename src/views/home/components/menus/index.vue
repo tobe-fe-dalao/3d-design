@@ -48,7 +48,7 @@ import {
   InboxOutlined,
   UploadOutlined,
 } from "@ant-design/icons-vue";
-import { IO } from "@/oasis/utils/IO";
+import { IO } from "@/oasis/utils/io";
 import { ref, defineAsyncComponent, computed, reactive, onMounted } from "vue";
 import {
   LocalModelType,

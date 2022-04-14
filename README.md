@@ -1,14 +1,14 @@
 <p align="center">
-  <a href="http://landing.ant.design">
-    <img width="234px" height="58px" src="https://uufefile.uupt.com/eic/cdn/glb/img/logo@2x.png"/>
+  <a href="#">
+    <img width="300" height="auto" src="https://uufefile.uupt.com/eic/cdn/glb/img/logo.png"/>
   </a>
 </p>
-<h1 align="center">UUEIC 3D Model</h1>
-<div align="center">旨在提升3D模型在网页端的还原度、提高UI的产出效率。</div>
+<h1 align="center">3DDesign</h1>
+<div align="center">一个可快速上手、可生成图和代码的3D模型调优工作台</div>
 
 
 ## 简介
-UUEIC 3D Model 是由UU跑腿效能创新中心发起的3D模型工具平台，核心功能基于高性能 Web 图形引擎 [Oasis](https://oasisengine.cn/) 实现。
+3DDesign是由UU跑腿-大前端技术团队发起的3D模型工具平台，核心功能基于高性能 Web 图形引擎 [Oasis](https://oasisengine.cn/) 实现。
 
 
 
