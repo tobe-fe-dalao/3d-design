@@ -3,12 +3,12 @@
     <img width="234px" height="58px" src="https://uufefile.uupt.com/eic/cdn/glb/img/logo@2x.png"/>
   </a>
 </p>
-<h1 align="center">UUEIC 3D Model</h1>
+<h1 align="center"></h1>
 <div align="center">旨在提升3D模型在网页端的还原度、提高UI的产出效率。</div>
 
 
 ## 简介
-UUEIC 3D Model 是由UU跑腿效能创新中心发起的3D模型工具平台，核心功能基于高性能 Web 图形引擎 [Oasis](https://oasisengine.cn/) 实现。
+3DDesign是由UU跑腿大前端技术团队自研的3D模型调优平台，核心功能基于高性能 Web 图形引擎 [Oasis](https://oasisengine.cn/) 实现。
 
 
 
@@ -33,4 +33,4 @@ npm i
 npm run dev
 ```
 
-[进入体验 😀](http://192.168.10.10:9534/EICModel/)
+[进入体验 😀](http://localhost:9534/EICModel/)
