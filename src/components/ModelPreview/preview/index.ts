@@ -185,7 +185,7 @@ export class PreviewManager {
 
     this.setIBL(
       this.sceneConfig?.light.IBLUrl ||
-        "http://uufefile.uupt.com/eic/cdn/glb/env/leadenhall_market_2k.hdr.env"
+        "https://uufefile.uupt.com/eic/cdn/glb/env/leadenhall_market_2k.hdr.env"
     );
   }
 

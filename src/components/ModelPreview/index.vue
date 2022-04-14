@@ -67,7 +67,7 @@ export default defineComponent({
   },
   setup(props, { emit }) {
 
-    const ossUrl = 'http://uufefile.uupt.com/eic/cdn/glb/';
+    const ossUrl = 'https://uufefile.uupt.com/eic/cdn/glb/';
 
     let show = ref(false);
     let showTab = ref(ShowTabMap.模型);
