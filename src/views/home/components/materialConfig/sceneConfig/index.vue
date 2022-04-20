@@ -46,7 +46,6 @@
               :max="1"
               :step="0.01"
               @change="(value: Event | number) => sceneConfig?.changeDirectLightIntensity(value as number)"
-              :style="{ width: '80%' }"
             />
           </div>
         </div>
@@ -86,6 +85,9 @@ const props = defineProps({
           align-items: center;
           justify-content: space-between;
           flex-direction: row-reverse;
+          .ant-slider {
+            width: 80%;
+          }
         }
       }
     }
