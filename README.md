@@ -69,9 +69,10 @@ npm run dev
 
 | 标题 | 二维码 | 目前状态 |
 | ---- | ---- | ----- |
+| Oasis官方交流群 | <img src="./public/docs/oasis-dingtalk.jpg" width="200" /> </br>「钉钉群 」 | 运营中                                                              |
 | 3DD官方维护群                                              | <img src="./public/docs/dingtalk.png" width="200" /> </br>「钉钉群 」                |      招募中    |
 | 扫地盲僧公众号                                             | <img src="./public/docs/wechat.jpg" width="200" /> </br>关注后回复「3DD」 | 运营中 |
-Oasis官方交流群 | <img src="./public/docs/oasis-dingtalk.jpg" width="200" /> </br>「钉钉群 」 | 运营中                                                              |
+
 
 ## 开发计划
 [Milestones](https://github.com/tobe-fe-dalao/3d-design/projects)  
