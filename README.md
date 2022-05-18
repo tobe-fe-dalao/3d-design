@@ -2,7 +2,7 @@
   <a href="#">
     <img width="300" height="auto" src="./src/assets/img/logo.png"/>
   </a>
-  <div align="center">一个零门槛快速上手、可生成图或代码片段的3D模型调优工作台</div>  
+  <div align="center">一个面向 Web 开发者和美术，零门槛，高还原度，快速上手的3D资产调优工作台</div>  
 </p>
 
 
