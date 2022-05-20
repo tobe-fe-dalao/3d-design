@@ -67,7 +67,6 @@
                 :max="1"
                 :step="0.01"
                 @change="onmetallicChange"
-                :style="{ width: '80%' }"
               />
             </div>
           </div>
@@ -80,7 +79,6 @@
                 :max="1"
                 :step="0.01"
                 @change="onroughnessChange"
-                :style="{ width: '80%' }"
               />
             </div>
           </div>
@@ -106,7 +104,6 @@
                 :max="1"
                 :step="0.01"
                 @change="onOpacityChange"
-                :style="{ width: '80%' }"
               />
             </div>
           </div>
@@ -186,7 +183,6 @@
                   :max="1"
                   :step="0.01"
                   @change="onNormalTextureIntensityChange"
-                  :style="{ width: '80%' }"
               />
             </div>
           </div>
@@ -524,6 +520,9 @@ defineExpose({
           align-items: center;
           justify-content: space-between;
           flex-direction: row-reverse;
+          .ant-slider {
+            width: 80%;
+          }
         }
       }
     }
