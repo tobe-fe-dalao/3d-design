@@ -10,7 +10,7 @@
               </div>
             </div>
           </div>
-          <a-image v-else :height="24" :src="Logo" style="width: 160px" />
+          <a-image v-else :height="24" :src="Logo" style="width: 160px" :preview="false"/>
         </div>
       </div>
       <div class="home-menus" :style="{ height: `calc(100% - ${headerHeight}px)` }">
