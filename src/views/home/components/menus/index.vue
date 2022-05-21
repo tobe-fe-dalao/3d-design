@@ -55,7 +55,6 @@ import {
   ModelAssetsManager,
 } from "@/manager/ModelAssetsManager";
 import { useStore } from "@/store";
-import { AssetType } from "oasis-engine";
 
 const store = useStore();
 

@@ -23,7 +23,7 @@
 
 <img width="600px" src="./public/docs/3DD.gif" /> 
 
-### 架构设计
+## 架构设计
 
 > 定位3D模型调试和产出的流程，基于Oasis引擎实时渲染，快速生成。  
 
@@ -65,7 +65,7 @@ npm run dev
 
 [进入体验 😀](https://tobe-fe-dalao.github.io/3d-design/#/)
 
-## 加入维护团队
+# 加入维护团队
 
 | 标题 | 二维码 | 目前状态 |
 | ---- | ---- | ----- |
@@ -73,9 +73,9 @@ npm run dev
 | 扫地盲僧公众号                                             | <img src="./public/docs/wechat.jpg" width="200" /> </br>关注后回复「3DD」 | 运营中 |
 Oasis官方交流群 | <img src="./public/docs/oasis-dingtalk.jpg" width="200" /> </br>「钉钉群 」 | 运营中                                                              |
 
-## 开发计划
+# 开发计划
 [Milestones](https://github.com/tobe-fe-dalao/3d-design/projects)  
 
-## 开源协议
-[MIT License](./LICENSE)  
+# License
+ [Apache-2.0](./LICENSE) © [MaleWeb](https://github.com/MaleWeb)
 

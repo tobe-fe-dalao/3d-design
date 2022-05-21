@@ -58,14 +58,6 @@ export class OneMaterial {
   roughnessMetallicTexture: Texture2D | undefined;
 
   /**
-   * 修改颜色
-   * @param color {any} 颜色值
-   */
-  changeColor(color: any) {
-    this.baseColor = color;
-  }
-
-  /**
    * 更换材质
    */
   changeMaterial(material: PBRMaterial | Partial<OneMaterial>) {
@@ -82,5 +74,13 @@ export class OneMaterial {
     this.metallic = material?.metallic || 0;
     this.roughness = material?.roughness || 0;
     this.isTransparent = !!material?.isTransparent;
+  }
+
+  /**
+   * 修改颜色
+   * @param color {any} 颜色值
+   */
+  changeColor(color: any) {
+    this.baseColor = color;
   }
 }
