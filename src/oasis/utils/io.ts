@@ -6,4 +6,6 @@ export class IO {
   static SAVE_ALL_CONFIG: string = "save_all_config";
   /** 🆗刷新模型*/
   static REFRESH_MODEL: string = "REFRESH_MODEL";
+  /** 🆗模型加载完毕*/
+  static MODEL_LOADED: string = "MODEL_LOADED";
 }
