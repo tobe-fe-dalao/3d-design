@@ -33,109 +33,115 @@ export class Capture extends Script {
    * @param isPNG 是否导出png。true：png。false: jpg
    * @param jpgQuality 导出jpg格式时的图片质量。0-1
    */
-  screenshot(width: number, height: number, isPNG = true, jpgQuality = 1) {
-    if (!this.camera) return;
+  screenshot(width: number, height: number, isPNG = true, jpgQuality = 1, isDownload = true):Promise<string> {
+    return new Promise((resolve, reject) => {
 
-    if (!this.screenshotCanvas) {
-      this.screenshotCanvas = document.createElement("canvas");
-    }
-    let canvas = this.screenshotCanvas;
+      if (!this.camera) return;
 
-    this.screenshotCanvas.width = width;
-    this.screenshotCanvas.height = height;
-
-    const context = this.screenshotCanvas.getContext(
-      "2d"
-    ) as CanvasRenderingContext2D;
-    let { background } = this.engine.sceneManager.activeScene;
-
-    const isPaused = this.engine.isPaused;
-    /**记录截图前的背景模式 */
-    const beforeBackgroundMode = background.mode;
-
-    /**将背景模式改为solidcolor 以便截取透明背景 */
-    background.mode = BackgroundMode.SolidColor;
-    this.engine.pause();
-
-    const originalTarget = this.camera.renderTarget;
-    const renderColorTexture = new RenderColorTexture(
-      this.engine,
-      width,
-      height
-    );
-    const renderTargetData = new Uint8Array(width * height * 4);
-    const renderTarget = new RenderTarget(
-      this.engine,
-      width,
-      height,
-      renderColorTexture,
-      undefined,
-      8
-    );
-
-    // render to off-screen
-    this.camera.renderTarget = renderTarget;
-    this.camera.aspectRatio = width / height;
-    this.camera.render();
-
-    renderColorTexture.getPixelBuffer(
-      null,
-      0,
-      0,
-      width,
-      height,
-      0,
-      renderTargetData
-    );
-
-    const imageData = context.createImageData(width, height);
-    imageData.data.set(renderTargetData);
-    context.putImageData(imageData, 0, 0);
-
-    if (!this.flipYCanvas) {
-      this.flipYCanvas = document.createElement("canvas");
-    }
-    canvas = this.flipYCanvas;
-
-    this.flipYCanvas.width = width;
-    this.flipYCanvas.height = height;
-
-    const ctx2 = this.flipYCanvas.getContext("2d") as CanvasRenderingContext2D;
-
-    ctx2.translate(0, height);
-    ctx2.scale(1, -1);
-    ctx2.drawImage(this.screenshotCanvas, 0, 0);
-
-    // download
-    canvas.toBlob(
-      (blob) => {
-        if (!this.camera) return;
-        const url = window.URL.createObjectURL(blob as Blob);
-        const a = document.createElement("a");
-
-        document.body.appendChild(a);
-        a.style.display = "none";
-        a.href = url;
-        a.download = "screenshot";
-
-        a.addEventListener("click", () => {
-          if (a.parentElement) {
-            a.parentElement.removeChild(a);
+      if (!this.screenshotCanvas) {
+        this.screenshotCanvas = document.createElement("canvas");
+      }
+      let canvas = this.screenshotCanvas;
+  
+      this.screenshotCanvas.width = width;
+      this.screenshotCanvas.height = height;
+  
+      const context = this.screenshotCanvas.getContext(
+        "2d"
+      ) as CanvasRenderingContext2D;
+      let { background } = this.engine.sceneManager.activeScene;
+  
+      const isPaused = this.engine.isPaused;
+      /**记录截图前的背景模式 */
+      const beforeBackgroundMode = background.mode;
+  
+      /**将背景模式改为solidcolor 以便截取透明背景 */
+      background.mode = BackgroundMode.SolidColor;
+      this.engine.pause();
+  
+      const originalTarget = this.camera.renderTarget;
+      const renderColorTexture = new RenderColorTexture(
+        this.engine,
+        width,
+        height
+      );
+      const renderTargetData = new Uint8Array(width * height * 4);
+      const renderTarget = new RenderTarget(
+        this.engine,
+        width,
+        height,
+        renderColorTexture,
+        undefined,
+        8
+      );
+  
+      // render to off-screen
+      this.camera.renderTarget = renderTarget;
+      this.camera.aspectRatio = width / height;
+      this.camera.render();
+  
+      renderColorTexture.getPixelBuffer(
+        null,
+        0,
+        0,
+        width,
+        height,
+        0,
+        renderTargetData
+      );
+  
+      const imageData = context.createImageData(width, height);
+      imageData.data.set(renderTargetData);
+      context.putImageData(imageData, 0, 0);
+  
+      if (!this.flipYCanvas) {
+        this.flipYCanvas = document.createElement("canvas");
+      }
+      canvas = this.flipYCanvas;
+  
+      this.flipYCanvas.width = width;
+      this.flipYCanvas.height = height;
+  
+      const ctx2 = this.flipYCanvas.getContext("2d") as CanvasRenderingContext2D;
+  
+      ctx2.translate(0, height);
+      ctx2.scale(1, -1);
+      ctx2.drawImage(this.screenshotCanvas, 0, 0);
+  
+      // download
+      canvas.toBlob(
+        (blob) => {
+          if (!this.camera) return;
+          const url = window.URL.createObjectURL(blob as Blob);
+          if(isDownload) {
+            const a = document.createElement("a");
+    
+            document.body.appendChild(a);
+            a.style.display = "none";
+            a.href = url;
+            a.download = "screenshot";
+    
+            a.addEventListener("click", () => {
+              if (a.parentElement) {
+                a.parentElement.removeChild(a);
+              }
+            });
+    
+            a.click();
+    
+            window.URL.revokeObjectURL(url);
           }
-        });
-
-        a.click();
-
-        window.URL.revokeObjectURL(url);
-
-        // revert
-        this.camera.renderTarget = originalTarget;
-        this.camera.resetAspectRatio();
-        !isPaused && this.engine.resume();
-        background.mode = beforeBackgroundMode;
-      },
-      isPNG ? "image/png" : "image/jpeg",
-      !isPNG && jpgQuality
-    );
+  
+          // revert
+          this.camera.renderTarget = originalTarget;
+          this.camera.resetAspectRatio();
+          !isPaused && this.engine.resume();
+          background.mode = beforeBackgroundMode;
+          resolve(url);
+        },
+        isPNG ? "image/png" : "image/jpeg",
+        !isPNG && jpgQuality
+      );
+    })
   }
 }

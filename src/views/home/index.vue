@@ -129,7 +129,10 @@ function onengineInited() {
 const MaterialConfigRef = ref<InstanceType<typeof MaterialConfig>>();
 const ModelList = cloneDeep(ModelAssetsManager.ModelList)
 const selectedModelPath = ref(ModelList[0].path);
-let selectedModel = computed(() => ModelAssetsManager.getModelInfoByPath(selectedModelPath.value) || ModelAssetsManager.ModelList[0]);
+let selectedModel = computed(() => {
+  
+  return ModelAssetsManager.getModelInfoByPath(selectedModelPath.value) || { path: selectedModelPath.value, name: '未知'}}
+);
 
 /**点击更换模型回调 */
 function onloadModel(modelPath: string) {

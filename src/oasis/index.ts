@@ -344,6 +344,8 @@ export class GameManager {
     this.modelEntity.clearChildren();
     this.modelEntity.addChild(asset.defaultSceneRoot);
 
+    this.engine.dispatch(IO.MODEL_LOADED);
+
     store.toggleLoading(false);
   }
 
@@ -434,12 +436,13 @@ export class GameManager {
    * @param height 生成的图片的高 1-2048
    * @param isPNG 是否导出png。true：png。false: jpg
    * @param jpgQuality 导出jpg格式时的图片质量。0-1
+   * @param isDownload 是否要下载
    */
-  screenshot(width: number, height: number, isPNG = true, jpgQuality = 1) {
+  async screenshot(width: number = 100, height: number = 100, isPNG = true, jpgQuality = 1, isDownload = true) {
     const capture =
       this.rootEntity.getComponent(Capture) ||
       this.rootEntity.addComponent(Capture).init(this.camera);
-    capture.screenshot(width, height, isPNG, jpgQuality);
+    return await capture.screenshot(width, height, isPNG, jpgQuality, isDownload);
   }
 
   /**

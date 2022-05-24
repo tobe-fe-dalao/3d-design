@@ -3,7 +3,7 @@
     <div class="upload-content">
       <div class="upload-content-title">上传</div>
       <div class="upload-list">
-        <div class=" mb-2 avatar-uploader">
+        <div class="mb-2 avatar-uploader">
           <a-upload
             name="avatar"
             list-type="picture-card"
@@ -80,14 +80,15 @@ const imageUrl = ref<string>("");
 
 /**
  * 选中本地文件
- * @param info 
+ * @param info
  */
 const handleChange = (info: UploadChangeParam) => {
-  const isModel = info.file.name.endsWith(".gltf") || info.file.name.endsWith(".glb");
+  const isModel =
+    info.file.name.endsWith(".gltf") || info.file.name.endsWith(".glb");
   if (!isModel) {
     message.error("请上传 GLTF/GLB 模型文件!");
-    loading.value = false
-    return
+    loading.value = false;
+    return;
   }
   if (info.file.status === "uploading") {
     loading.value = true;
@@ -95,7 +96,7 @@ const handleChange = (info: UploadChangeParam) => {
   }
 
   if (info.file) {
-    handleUploadModel(info.file)
+    handleUploadModel(info.file);
   }
   if (info.file.status === "error") {
     loading.value = false;
@@ -128,17 +129,22 @@ async function handleUploadModel(file: File) {
     });
     const blob = new Blob([JSON.stringify(gltf)]);
     url = `${URL.createObjectURL(blob)}#.gltf`;
-
   } else {
     url = `${url}#.glb`;
   }
 
-  ModelAssetsManager.addUploadModel({
-    name: file.name,
-    path: url
+  GameManager.ins.engine.once(IO.MODEL_LOADED, async () => {
+    setTimeout(async () => {
+      ModelAssetsManager.addUploadModel({
+        name: file.name,
+        img: await GameManager.ins.screenshot(200, 200, true, 1, false),
+        path: url,
+      });
+    }, 300);
   });
 
   emit("upload", url);
+
 }
 
 const beforeUpload = (file: UploadProps["fileList"][number]) => {
