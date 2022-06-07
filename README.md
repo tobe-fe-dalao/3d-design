@@ -17,7 +17,7 @@
 <p>   
 
 ## 简介
-> 3D Design是由UU跑腿-大前端技术团队发起的3D模型工具平台，核心功能基于高性能 Web 图形引擎 [Oasis](https://oasisengine.cn/) 实现。  
+> 3D Design是由UU跑腿效率工程团队发起的3D模型工具平台，核心功能基于高性能 Web 图形引擎 [Oasis](https://oasisengine.cn/) 实现。  
 
 [使用文档介绍](https://www.yuque.com/blindmonk/3ddesign)  |  [博文介绍](https://juejin.cn/post/7070497172533280782)
 
